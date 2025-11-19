@@ -2,9 +2,10 @@
 @import 'tailwindcss';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  max-width: none;
   font-weight: normal;
 }
 
@@ -23,14 +24,5 @@ a,
 }
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+  /* Removido layout de grid/flex do scaffold para não quebrar o layout de app */
 }
