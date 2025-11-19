@@ -1,5 +1,5 @@
 /* color palette from <https://github.com/vuejs/theme> */
-:root {
+/* :root {
   --vt-c-default: linear-gradient(220deg, rgb(122, 6, 122), rgb(16, 204, 218));
 
   --vt-c-white: #ffffff;
@@ -85,5 +85,5 @@ body {
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
-}  */
+  -moz-osx-font-smoothing: grayscale;
+}
