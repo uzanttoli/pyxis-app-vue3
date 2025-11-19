@@ -1,5 +1,5 @@
 <template>
-  <header class="h-16 flex items-center px-4 bg-amber-400 border-b shadow-sm">
+  <header class="h-16 flex items-center px-4 bg-amber-400 shadow-sm">
     <button class="md:hidden mr-3" @click="$emit('toggle-sidebar')">
       <svg
         class="w-6 h-6 text-gray-700"

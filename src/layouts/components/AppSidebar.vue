@@ -1,26 +1,57 @@
-<script setup lang="ts">
-defineProps<{
-  open: boolean
-}>()
-defineEmits(['close'])
-</script>
-
 <template>
-  <div
-    v-if="open"
-    class="fixed inset-0 bg-black bg-opacity-40 md:hidden"
-    @click="$emit('close')"
-  ></div>
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside
+      class="bg-white border-r border-gray-200 w-64 flex-shrink-0 transition-all duration-300"
+      :class="drawerOpen ? 'translate-x-0' : '-translate-x-47'"
+    >
+      <div class="h-16 flex items-center justify-between px-4 border-b border-gray-100">
+        <span class="text-xl font-semibold">Menu</span>
+        <button
+          class="p-2 rounded-md hover:bg-gray-100 transition"
+          @click="drawerOpen = !drawerOpen"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
 
-  <aside
-    class="fixed md:static top-0 left-0 h-full w-64 bg-white border-r shadow-sm transform transition-transform duration-200 md:translate-x-0 flex flex-col"
-    :class="open ? 'translate-x-0' : '-translate-x-full'"
-  >
-    <div class="h-16 flex items-center px-4 border-b font-semibold">Menu</div>
-
-    <nav class="flex-1 p-4 space-y-2">
-      <a href="#" class="block px-3 py-2 rounded bg-gray-100">teste 1</a>
-      <a href="#" class="block px-3 py-2 rounded bg-gray-100">teste 2</a>
-    </nav>
-  </aside>
+      <nav class="p-4 overflow-y-auto space-y-2">
+        <button
+          v-for="(item, index) in menus"
+          :key="index"
+          class="w-full flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 text-gray-700 text-left transition"
+        >
+          <span>{{ item.title }}</span>
+        </button>
+      </nav>
+    </aside>
+  </div>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+
+const drawerOpen = ref(true)
+
+const userName = ref('Fulano')
+
+const menus = ref([{ title: 'Dashboard' }, { title: 'Operação' }, { title: 'Utilitários' }])
+</script>
+<style scoped>
+aside {
+  background: var(--vt-c-default);
+}
+</style>
