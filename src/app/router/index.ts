@@ -10,6 +10,11 @@ const router = createRouter({
       component: HomeView,
     },
     // {
+    //   path: '/pyxis/gerencial/tmt',
+    //   name: 'gerencialTmt',
+    //   component:()=> import('../../')
+    // }
+    // {
     //   path: '/pyxis/utilitarios',
     //   name: 'utilitarios',
     //   component: () => import('../../')

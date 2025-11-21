@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import AppSidebar from './components/AppSidebar.vue'
+import AppSidebar from './components/AppSidebar2.vue'
 
 const sidebarOpen = ref(false)
 
@@ -11,7 +11,7 @@ function toggleSidebar() {
 
 <template>
   <div class="flex h-screen bg-gray-50">
-    <AppSidebar :open="sidebarOpen" @close="sidebarOpen = false" />
+    <AppSidebar />
 
     <div class="flex flex-col flex-1">
       <main class="p-4 overflow-auto flex-1">

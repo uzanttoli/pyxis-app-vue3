@@ -1,6 +1,6 @@
 <script setup>
 import { Icon } from '@iconify/vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import http from '../../core/http/httpClient'
 
 const drawerOpen = ref(true)
@@ -10,7 +10,11 @@ const profile = ref('Administrador')
 const avatarName = ref(null)
 
 const menus = ref([
-  { title: 'Dashboard', icon: 'mdi:report-arc' },
+  {
+    title: 'Gerencial',
+    icon: 'mdi:report-arc',
+    submMenu: [{ title: 'TMT' }, { title: 'Ocupação' }],
+  },
   { title: 'Operação', icon: 'mdi:account-group' },
 ])
 
@@ -25,13 +29,85 @@ function imagemPerfil(img) {
   return `http://172.16.252.214:4200/index.php/api/shared/arquivos/minha_imagem/${img}`
 }
 
-getAvatar()
+const items = ref([
+  {
+    label: 'File',
+    icon: 'pi pi-file',
+    items: [
+      {
+        label: 'New',
+        icon: 'pi pi-plus',
+        items: [
+          {
+            label: 'Document',
+            icon: 'pi pi-file',
+          },
+          {
+            label: 'Image',
+            icon: 'pi pi-image',
+          },
+          {
+            label: 'Video',
+            icon: 'pi pi-video',
+          },
+        ],
+      },
+      {
+        label: 'Open',
+        icon: 'pi pi-folder-open',
+      },
+      {
+        label: 'Print',
+        icon: 'pi pi-print',
+      },
+    ],
+  },
+  {
+    label: 'Edit',
+    icon: 'pi pi-file-edit',
+    items: [
+      {
+        label: 'Copy',
+        icon: 'pi pi-copy',
+      },
+      {
+        label: 'Delete',
+        icon: 'pi pi-times',
+      },
+    ],
+  },
+  {
+    label: 'Search',
+    icon: 'pi pi-search',
+  },
+  {
+    separator: true,
+  },
+  {
+    label: 'Share',
+    icon: 'pi pi-share-alt',
+    items: [
+      {
+        label: 'Slack',
+        icon: 'pi pi-slack',
+      },
+      {
+        label: 'Whatsapp',
+        icon: 'pi pi-whatsapp',
+      },
+    ],
+  },
+])
+
+onMounted(() => {
+  getAvatar()
+})
 </script>
 
 <template>
   <div class="flex h-screen">
     <aside
-      class="bg-white border-r border-gray-200 w-64 flex-shrink-0 transition-all duration-300"
+      class="bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 w-64"
       :class="drawerOpen ? 'translate-x-0' : '-translate-x-47'"
     >
       <div class="h-16 flex items-center justify-between px-4 border-b border-gray-100">
@@ -43,7 +119,7 @@ getAvatar()
           />
 
           <div class="flex flex-col leading-tight">
-            <span>{{ userName }}</span>
+            <span class="text-gray-500 font-semibold">{{ userName }}</span>
             <span class="text-sm text-gray-500">{{ profile }}</span>
           </div>
         </div>
